@@ -16,8 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           always-auth: true
-          node-version: '14.x'
-          _auth: ${{secrets.NEXUS_TOKEN}}
+          _auth: ${{ secrets.NEXUS_TOKEN }}
           registry-url: https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/
       - name: Install dependencies
         run: npm install
