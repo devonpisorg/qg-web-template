@@ -17,10 +17,9 @@ jobs:
         with:
           always-auth: true
           node-version: '14.x'
+          _auth: ${{secrets.NEXUS_TOKEN}}
           registry-url: https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/
       - name: Install dependencies
-        env:
-          NEXUS_TOKEN: ${{secrets.NEXUS_TOKEN}}
         run: npm install
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
