@@ -13,8 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
-        env:
-          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
         run: yarn
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
