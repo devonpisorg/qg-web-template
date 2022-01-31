@@ -9,19 +9,28 @@ jobs:
   chromatic-deployment:
     # Operating System
     runs-on: ubuntu-latest
-    # Job steps
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        env:
-          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
-        run: npm install
-        # 👇 Adds Chromatic as a step in the workflow
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        # Chromatic GitHub Action options
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install dependencies
+      env:
+        NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+      run: npm install
+      # 👇 Adds Chromatic as a step in the workflow
+    - name: Publish to Chromatic
+      uses: chromaui/action@v1
+      # Chromatic GitHub Action options
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
