@@ -24,7 +24,7 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       env:
-        NEXUS_TOKEN: cmVhZG9ubHkyOkJoLXF2Zz1jJmFtcHNKeCk5YlQ0Wl9sc2xrM2psa2p4cHdwcQ==
+        NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
       run: npm install
       # 👇 Adds Chromatic as a step in the workflow
     - name: Publish to Chromatic
