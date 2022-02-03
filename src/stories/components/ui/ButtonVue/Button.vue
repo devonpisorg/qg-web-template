@@ -1,5 +1,5 @@
 <template>
-  <component v-bind:is="is" :class="classes" :disabled="is === `a` ? undefined : disabled">
+  <component :is="is" :class="classes" :disabled="is === `a` ? undefined : disabled">
     <slot>Button label</slot>
   </component>
 </template>

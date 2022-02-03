@@ -1,10 +1,13 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Button, { buttonVariants, buttonSizes } from './Button.vue';
+import Block from './templates/Block.html';
+import Sizes from './templates/Sizes.html';
+import States from './templates/States.html';
+import Tags from './templates/Tags.html';
 
 export const buttonStatues = ["default", "active", "focus", "disabled"];
 
-<Meta title="Components/UI/Buttons" component={Button} />
+<Meta title="Components/UI/Button" />
 
 # Buttons
 
@@ -25,13 +28,7 @@ For more details please refer to [Bootstrap](https://getbootstrap.com/docs/3.4/c
   >
     {() => {
       return {
-        components: { Button },
-        template: `
-          <Button is="a" href="#" role="button">Link</Button>
-          <Button type="submit">Button[type=submit]</Button>
-          <Button is="input" type="button" value="Input[type=button]" />
-          <Button is="input" type="button" value="Input[type=submit]" />
-        `,
+        template: Tags,
       };
     }}
   </Story>
@@ -68,18 +65,7 @@ For **focus** state, there's no need to add `:focus`/ as it's a pseudo-class, bu
   >
     {() => {
       return {
-        components: { Button },
-        template: buttonVariants.map(
-          variant=>buttonStatues.map(
-            state=>`
-              <Button 
-                variant="${variant}" 
-                ${state==="disabled" ? "disabled" : "" }
-                ${state==="focus" ? "isFocus" : "" }
-                ${state==="active" ? "isActive" : "" }
-              >${variant}</Button>`
-          ).join("")
-        ).join(""),
+        template: States,
       };
     }}
   </Story>
@@ -99,8 +85,7 @@ Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for addi
   >
     {() => {
       return {
-        components: { Button },
-        template: buttonSizes.map(size=>`<Button size="${size}">${size}</Button>`).join(""),
+        template: Sizes,
       };
     }}
   </Story>
@@ -112,11 +97,7 @@ Create block level buttons—those that span the full width of a parent— by ad
   <Story name="BlockSizes">
     {() => {
       return {
-        components: { Button },
-        template: `
-          <Button type="button" isBlock>Default</Button>
-          <Button type="button" variant="primary" isBlock>Primary</Button>
-        `,
+        template: Block,
       };
     }}
   </Story>

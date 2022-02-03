@@ -1,13 +1,10 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Block from './templates/Block.html';
-import Sizes from './templates/Sizes.html';
-import States from './templates/States.html';
-import Tags from './templates/Tags.html';
+import Button, { buttonVariants, buttonSizes } from './Button.vue';
 
 export const buttonStatues = ["default", "active", "focus", "disabled"];
 
-<Meta title="Components/UI/ButtonsAlt" />
+<Meta title="Components/UI/ButtonVue" component={Button} />
 
 # Buttons
 
@@ -28,7 +25,13 @@ For more details please refer to [Bootstrap](https://getbootstrap.com/docs/3.4/c
   >
     {() => {
       return {
-        template: Tags,
+        components: { "qg-button": Button },
+        template: `
+          <qg-button is="a" href="#" role="button">Link</qg-button>
+          <qg-button type="submit">Button[type=submit]</qg-button>
+          <qg-button is="input" type="button" value="Input[type=button]" />
+          <qg-button is="input" type="button" value="Input[type=submit]" />
+        `,
       };
     }}
   </Story>
@@ -65,7 +68,18 @@ For **focus** state, there's no need to add `:focus`/ as it's a pseudo-class, bu
   >
     {() => {
       return {
-        template: States,
+        components: { "qg-button": Button },
+        template: buttonVariants.map(
+          variant=>buttonStatues.map(
+            state=>`
+              <qg-button 
+                variant="${variant}" 
+                ${state==="disabled" ? "disabled" : "" }
+                ${state==="focus" ? "isFocus" : "" }
+                ${state==="active" ? "isActive" : "" }
+              >${variant}</qg-button>`
+          ).join("")
+        ).join(""),
       };
     }}
   </Story>
@@ -85,7 +99,8 @@ Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for addi
   >
     {() => {
       return {
-        template: Sizes,
+        components: { "qg-button": Button },
+        template: buttonSizes.map(size=>`<qg-button size="${size}">${size}</qg-button>`).join(""),
       };
     }}
   </Story>
@@ -97,7 +112,11 @@ Create block level buttons—those that span the full width of a parent— by ad
   <Story name="BlockSizes">
     {() => {
       return {
-        template: Block,
+        components: { "qg-button": Button },
+        template: `
+          <qg-button type="button" isBlock>Default</qg-button>
+          <qg-button type="button" variant="primary" isBlock>Primary</qg-button>
+        `,
       };
     }}
   </Story>
