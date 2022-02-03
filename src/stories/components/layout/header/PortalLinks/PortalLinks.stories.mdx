@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import PortalLinks from "./PortalLinks.html"
+import PortalLinks from "../../../../../../src/assets/_project/_blocks/layout/header/portal-links.html";
 
 <Meta title="Components/Layout/Header/PortalLinks" />
 
@@ -8,6 +8,10 @@ import PortalLinks from "./PortalLinks.html"
 
 <Canvas>
   <Story name="PortalLinks">
-    {()=>PortalLinks}
+    {() => {
+      return {
+        template: PortalLinks,
+      };
+    }}
   </Story>
 </Canvas>

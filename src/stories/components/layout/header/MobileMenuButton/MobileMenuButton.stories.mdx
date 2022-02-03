@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import MobileMenuButton from "./MobileMenuButton.html"
+import MobileMenuButton from "../../../../../../src/assets/_project/_blocks/layout/header/mobile-menu-button.html";
 
 <Meta title="Components/Layout/Header/MobileMenuButton" />
 
@@ -8,6 +8,10 @@ import MobileMenuButton from "./MobileMenuButton.html"
 
 <Canvas withSource="open">
   <Story name="MobileMenuButton">
-    {()=>MobileMenuButton}
+    {() => {
+      return {
+        template: MobileMenuButton,
+      };
+    }}
   </Story>
 </Canvas>

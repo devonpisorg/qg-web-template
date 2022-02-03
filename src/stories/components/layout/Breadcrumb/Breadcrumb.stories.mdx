@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import BreadcrumbGlobal from "./BreadcrumbGlobal.html"
+import BreadcrumbGlobal from "../../../../../src/assets/_project/_blocks/layout/breadcrumbs/breadcrumb-global.html";
 
 <Meta title="Components/Layout/Breadcrumb" />
 
@@ -8,6 +8,10 @@ import BreadcrumbGlobal from "./BreadcrumbGlobal.html"
 
 <Canvas withSource="open">
   <Story name="BreadcrumbGlobal">
-    {()=>BreadcrumbGlobal}
+    {() => {
+      return {
+        template: BreadcrumbGlobal,
+      };
+    }}
   </Story>
 </Canvas>

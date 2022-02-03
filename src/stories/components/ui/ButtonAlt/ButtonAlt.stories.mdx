@@ -1,15 +1,17 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Tags from './templates/Tags.html';
+import Block from './templates/Block.html';
 import Sizes from './templates/Sizes.html';
-import BlockSizes from './templates/BlockSizes.html';
 import States from './templates/States.html';
+import Tags from './templates/Tags.html';
 
-<Meta title="Components/UI/Buttons" />
+export const buttonStatues = ["default", "active", "focus", "disabled"];
+
+<Meta title="Components/UI/ButtonsAlt" />
 
 # Buttons
 
-Publishers can use this component to provide a visual representation of context, it inherits and extends the [Bootstrap image utilities](https://getbootstrap.com/docs/3.4/css/#images).
+Buttons allow users to take actions, and make choices, with a single tap.
 
 ## Button tags
 
@@ -17,8 +19,18 @@ Use the button classes on an `<a>`, `<button>`, or `<input>` element.
 For more details please refer to [Bootstrap](https://getbootstrap.com/docs/3.4/css/#buttons-tags).
 
 <Canvas withSource="open">
-  <Story name="Tags">
-    {()=>Tags}
+  <Story name="Tags"
+    decorators={[
+      () => ({
+        template: '<div style="display:flex; gap:1em; align-items:center"><story /></div>',
+      }),
+    ]}
+  >
+    {() => {
+      return {
+        template: Tags,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -40,8 +52,22 @@ For **disabled** state, add the `disabled` attribute to `<button>` buttons or ad
 For **focus** state, there's no need to add `:focus`/ as it's a pseudo-class, but if you need to force the same appearance, go ahead and add `.focus`.
 
 <Canvas withSource="open">
-  <Story name="States">
-    {()=>States}
+  <Story name="States"
+    decorators={[
+      () => ({
+        template: `
+          <div style="display:grid; grid-template-columns: repeat(4, max-content); justify-items: start; gap: 1em; background-color: lightgrey; padding:1em">
+            ${buttonStatues.map(state=>`<div>${state}</div>`).join("")}
+            <story />
+          </div>`,
+      }),
+    ]}
+  >
+    {() => {
+      return {
+        template: States,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -50,8 +76,18 @@ For **focus** state, there's no need to add `:focus`/ as it's a pseudo-class, bu
 Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for additional sizes.
 
 <Canvas withSource="open">
-  <Story name="Sizes">
-    {()=>Sizes}
+  <Story name="Sizes"
+    decorators={[
+      () => ({
+        template: '<div style="display:flex; gap:1em; align-items:center"><story /></div>',
+      }),
+    ]}
+  >
+    {() => {
+      return {
+        template: Sizes,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -59,6 +95,10 @@ Create block level buttons—those that span the full width of a parent— by ad
 
 <Canvas withSource="open">
   <Story name="BlockSizes">
-    {()=>BlockSizes}
+    {() => {
+      return {
+        template: Block,
+      };
+    }}
   </Story>
 </Canvas>

@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Location from "./Location.html"
+import Location from "../../../../../src/assets/_project/_blocks/layout/location/location.html";
 
 <Meta title="Components/Layout/Location" />
 
@@ -8,6 +8,10 @@ import Location from "./Location.html"
 
 <Canvas withSource="open">
   <Story name="Location">
-    {()=>Location}
+    {() => {
+      return {
+        template: Location,
+      };
+    }}
   </Story>
 </Canvas>

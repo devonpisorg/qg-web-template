@@ -21,7 +21,11 @@ Add classes to an `<img>` element to easily style images in any project.
 
 <Canvas withSource="open">
   <Story name="BasicDefault">
-    {()=>BasicDefault}
+    {() => {
+      return {
+        template: BasicDefault,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -29,7 +33,11 @@ Add classes to an `<img>` element to easily style images in any project.
 
 <Canvas withSource="open">
   <Story name="BasicThumbnail">
-    {()=>BasicThumbnail}
+    {() => {
+      return {
+        template: BasicThumbnail,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -42,7 +50,11 @@ you also need to add `class="clearfix"` to the parent container.
 
 <Canvas withSource="open">
   <Story name="FigureDefault">
-    {()=>FigureDefault}
+    {() => {
+      return {
+        template: FigureDefault,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -50,7 +62,11 @@ you also need to add `class="clearfix"` to the parent container.
 
 <Canvas withSource="open">
   <Story name="FigureDescriptionRight">
-    {()=>FigureDescriptionRight}
+    {() => {
+      return {
+        template: FigureDescriptionRight,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -58,7 +74,11 @@ you also need to add `class="clearfix"` to the parent container.
 
 <Canvas withSource="open">
   <Story name="FigureDescriptionLeft">
-    {()=>FigureDescriptionLeft}
+    {() => {
+      return {
+        template: FigureDescriptionLeft,
+      };
+    }}
   </Story>
 </Canvas>
 
@@ -69,6 +89,10 @@ You are required to provide the attribute `data-fancybox` an gallery id which be
 
 <Canvas withSource="open">
   <Story name="Enlarge">
-    {()=>Enlarge}
+    {() => {
+      return {
+        template: Enlarge,
+      };
+    }}
   </Story>
 </Canvas>

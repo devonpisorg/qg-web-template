@@ -13,7 +13,9 @@
     "node": true,
     "es6": true
   },
-  "extends": ["semistandard"],
+  "extends": ["semistandard", 
+    "plugin:vue/vue3-essential",
+    "eslint:recommended"],
   "rules": {
     "indent": [1, 2],
     "one-var": 2,
@@ -32,11 +34,11 @@
           "Property": true,
           "VariableDeclarator": true,
           "ImportDeclaration": true,
-          "ObjectExpression": true,
-        },
-      },
+          "ObjectExpression": true
+        }
+      }
     ],
-    "no-warning-comments": 1,
+    "no-warning-comments": 1
   },
   "overrides": [
     {
@@ -48,5 +50,9 @@
         "jest": true
       }
     }
-  ]
+  ],
+  "root": true,
+  "parserOptions": {
+    "parser": "babel-eslint"
+  }
 }

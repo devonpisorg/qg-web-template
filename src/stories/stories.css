@@ -34,3 +34,9 @@ div.story-color-swatch-label>div:last-of-type {
   height: 1.5em;
   border-radius: 1.5em;
 }
+
+.sbdocs pre code {
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-wrap: break-word;
+}

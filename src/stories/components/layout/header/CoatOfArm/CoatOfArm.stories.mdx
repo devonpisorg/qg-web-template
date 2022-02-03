@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import CoatOfArm from "./CoatOfArm.html"
+import CoatOfArm from "../../../../../../src/assets/_project/_blocks/layout/header/coat-of-arms.html";
 
 <Meta title="Components/Layout/Header/CoatOfArm" />
 
@@ -8,6 +8,10 @@ import CoatOfArm from "./CoatOfArm.html"
 
 <Canvas withSource="open">
   <Story name="CoatOfArm">
-    {()=>CoatOfArm}
+    {() => {
+      return {
+        template: CoatOfArm,
+      };
+    }}
   </Story>
 </Canvas>

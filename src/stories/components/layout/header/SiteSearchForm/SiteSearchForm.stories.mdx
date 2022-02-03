@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import SiteSearchForm from "./SiteSearchForm.html"
+import SiteSearchForm from "../../../../../../src/assets/_project/_blocks/layout/site-search-form.html";
 
 <Meta title="Components/Layout/Header/SiteSearchForm" />
 
@@ -8,6 +8,10 @@ import SiteSearchForm from "./SiteSearchForm.html"
 
 <Canvas withSource="open">
   <Story name="SiteSearchForm">
-    {()=>SiteSearchForm}
+    {() => {
+      return {
+        template: SiteSearchForm,
+      };
+    }}
   </Story>
 </Canvas>

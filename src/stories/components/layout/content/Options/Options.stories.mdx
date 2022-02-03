@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import Options from "./Options.html"
+import Options from "../../../../../../src/assets/_project/_blocks/layout/content/options.html";
 
 <Meta title="Components/Layout/Content/Options" />
 
@@ -8,6 +8,10 @@ import Options from "./Options.html"
 
 <Canvas withSource="open">
   <Story name="Options">
-    {()=>Options}
+    {() => {
+      return {
+        template: Options,
+      };
+    }}
   </Story>
 </Canvas>

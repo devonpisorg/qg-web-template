@@ -56,3 +56,5 @@ web-template-release/
 template-pages/sample/*
 storybook-static
 /storybook-static/**
+stories1
+.storybook1

@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import HeaderLocation from "./HeaderLocation"
+import HeaderLocation from "../../../../../../src/assets/_project/_blocks/layout/header/header-location.html";
 
 <Meta title="Components/Layout/Header/HeaderLocation" />
 
@@ -8,6 +8,10 @@ import HeaderLocation from "./HeaderLocation"
 
 <Canvas withSource="open">
   <Story name="HeaderLocation">
-    {()=>HeaderLocation}
+    {() => {
+      return {
+        template: HeaderLocation,
+      };
+    }}
   </Story>
 </Canvas>
