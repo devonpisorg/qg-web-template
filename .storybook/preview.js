@@ -15,7 +15,7 @@ export const renderToDOM = (story) => {
   const storyObj = story();
   createApp(storyObj).mount(div);
   const snippet = prettier.format(
-    (storyObj.components? vueHeading + storyObj.template + htmlHeading : "") + 
+    (storyObj.components? vueHeading + storyObj.template.replaceAll("><", "> <") + htmlHeading : "") + 
     div.innerHTML.replaceAll("><", "> <"), 
     {
       parser: 'html',

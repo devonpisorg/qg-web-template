@@ -44,3 +44,7 @@ div.story-color-swatch-label>div:last-of-type {
 body {
   padding: 0;
 }
+
+thead > tr > th, thead > tr > td {
+  background: inherit;
+}
