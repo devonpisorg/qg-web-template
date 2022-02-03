@@ -14,7 +14,6 @@ export const renderToDOM = (story) => {
   div.remove();
   return snippet;
 }
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

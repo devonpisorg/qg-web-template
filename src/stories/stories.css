@@ -40,3 +40,7 @@ div.story-color-swatch-label>div:last-of-type {
   color: #e83e8c;
   word-wrap: break-word;
 }
+
+body {
+  padding: 0;
+}
