@@ -15,7 +15,9 @@
   },
   "extends": ["semistandard", 
     "plugin:vue/vue3-essential",
-    "eslint:recommended"],
+    "eslint:recommended",
+    "prettier"
+  ],
   "rules": {
     "indent": [1, 2],
     "one-var": 2,

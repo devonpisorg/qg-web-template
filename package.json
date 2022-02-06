@@ -26,7 +26,8 @@
     "postpublish": "gulp clean-publish",
     "storybook": "npm run build && concurrently \"start-storybook -p 6006\" \"npm:watch\"",
     "build-storybook": "npm run build && build-storybook",
-    "chromatic": "npx chromatic --project-token=4c58dd8c9ade"
+    "chromatic": "npx chromatic --project-token=4c58dd8c9ade",
+    "lint-storybook": "eslint src/stories"
   },
   "authors": "Queensland Government",
   "licence": "all rights reserved",
@@ -59,6 +60,7 @@
     "debug": "^4.1.1",
     "del": "^2.2.2",
     "eslint": "^6.0.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-semistandard": "^7.0.0",
     "eslint-config-standard": "^6.0.1",
     "eslint-html-reporter": "^0.5.2",
@@ -66,7 +68,7 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
-    "eslint-plugin-vue": "^7.0.0",
+    "eslint-plugin-vue": "^8.4.1",
     "event-stream": "^3.3.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^2.0.0",
