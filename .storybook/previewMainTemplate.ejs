@@ -53,11 +53,11 @@
     <script src="/assets/v4/latest/lib/all-ext-min.js"></script>
     <script>
       function handleStoryInit() {
-        // setTimeout(() => {
+        setTimeout(() => {
           const script = document.createElement('script');
           script.src = "/assets/v4/latest/js/qg-main.js";
           document.getElementsByTagName('head')[0].appendChild(script);
-        // }, 100)
+        }, 1000)
       }
 
       // // set up the mutation observer

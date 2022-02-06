@@ -1,48 +1,14 @@
 import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
 
-import BasicDefault from './templates/BasicDefault.html';
-import BasicThumbnail from './templates/BasicThumbnail.html';
-import FigureDefault from './templates/FigureDefault.html';
-import FigureDescriptionRight from './templates/FigureDescriptionRight.html';
-import FigureDescriptionLeft from './templates/FigureDescriptionLeft.html';
-import Enlarge from './templates/Enlarge.html';
 import Figure from './Figure.vue';
 
-<Meta title="Components/UI/ImageVue" />
+<Meta title="Components/UI/FigureVue" />
 
-# Images
+# Figure
 
 Publishers can use this component to provide a visual representation of context, it inherits and extends the [Bootstrap image utilities](https://getbootstrap.com/docs/3.4/css/#images).
 
-## Basic standalone image
-
-Add classes to an `<img>` element to easily style images in any project.
-
-### Default
-
-<Canvas withSource="open">
-  <Story name="BasicDefault">
-    {() => {
-      return {
-        template: BasicDefault,
-      };
-    }}
-  </Story>
-</Canvas>
-
-### With class="img-thumbnail"
-
-<Canvas withSource="open">
-  <Story name="BasicThumbnail">
-    {() => {
-      return {
-        template: BasicThumbnail,
-      };
-    }}
-  </Story>
-</Canvas>
-
-## Image with figure and caption/description
+## Default
 
 We use `<figure>` together with image to improve accessibility with caption, just add the standard HTML5 figure code in the `<div id="qg-primary-content">` element, or add the class `qg-fig` to any figure element outside of the qg-primary-content element.
 
@@ -141,4 +107,5 @@ You are required to provide the attribute `data-fancybox` an gallery id which be
   </Story>
 </Canvas>
 
+## Props
 <ArgsTable of={Figure} />

@@ -1,17 +1,15 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import ApplicationPage from "../../../../src/template-pages/application-page.html";
+import ApplicationPage from "./ApplicationPage.vue";
 
 <Meta title="Page templates/Application page" />
 
-# Application page
+# ApplicationPage
 
-<Canvas>
-  <Story name="ApplicationPage" parameters={{layout: 'fullscreen'}}>
-    {() => {
-      return {
-        template: ApplicationPage,
-      };
-    }}
+Component description placeholder
+
+<Canvas withSource="open">
+  <Story name="ApplicationPage">
+    {() => ApplicationPage}
   </Story>
 </Canvas>

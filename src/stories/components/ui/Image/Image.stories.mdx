@@ -1,15 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-
-import BasicDefault from './templates/BasicDefault.html';
-import BasicThumbnail from './templates/BasicThumbnail.html';
-import FigureDefault from './templates/FigureDefault.html';
-import FigureDescriptionRight from './templates/FigureDescriptionRight.html';
-import FigureDescriptionLeft from './templates/FigureDescriptionLeft.html';
-import Enlarge from './templates/Enlarge.html';
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
 
 <Meta title="Components/UI/Image" />
 
-# Images
+# Image
 
 Publishers can use this component to provide a visual representation of context, it inherits and extends the [Bootstrap image utilities](https://getbootstrap.com/docs/3.4/css/#images).
 
@@ -23,7 +16,7 @@ Add classes to an `<img>` element to easily style images in any project.
   <Story name="BasicDefault">
     {() => {
       return {
-        template: BasicDefault,
+        template: `<img src="https://picsum.photos/id/237/500/200" alt="image_description"/>`,
       };
     }}
   </Story>
@@ -35,63 +28,7 @@ Add classes to an `<img>` element to easily style images in any project.
   <Story name="BasicThumbnail">
     {() => {
       return {
-        template: BasicThumbnail,
-      };
-    }}
-  </Story>
-</Canvas>
-
-## Image with figure and caption/description
-
-We use `<figure>` together with image to improve accessibility with caption, just add the standard HTML5 figure code in the `<div id="qg-primary-content">` element, or add the class `qg-fig` to any figure element outside of the qg-primary-content element.
-
-You can control the image description alignment left or right (turning it into a cut-in image) by adding the class `pull-right` or `pull-left` to the figure element `<figure class="pull-right">`, 
-you also need to add `class="clearfix"` to the parent container.
-
-<Canvas withSource="open">
-  <Story name="FigureDefault">
-    {() => {
-      return {
-        template: FigureDefault,
-      };
-    }}
-  </Story>
-</Canvas>
-
-### Figure description right
-
-<Canvas withSource="open">
-  <Story name="FigureDescriptionRight">
-    {() => {
-      return {
-        template: FigureDescriptionRight,
-      };
-    }}
-  </Story>
-</Canvas>
-
-### Figure description left
-
-<Canvas withSource="open">
-  <Story name="FigureDescriptionLeft">
-    {() => {
-      return {
-        template: FigureDescriptionLeft,
-      };
-    }}
-  </Story>
-</Canvas>
-
-## Enlarge image
-
-We are using the Fancybox library for lightbox function, please check [fancybox plugin doc](http://fancyapps.com/fancybox/) for more details regarding the config.
-You are required to provide the attribute `data-fancybox` an gallery id which begin with `gallery`.
-
-<Canvas withSource="open">
-  <Story name="Enlarge">
-    {() => {
-      return {
-        template: Enlarge,
+        template: `<img src="https://picsum.photos/id/237/500/200" alt="image_description" class="img-thumbnail">`,
       };
     }}
   </Story>

@@ -22,13 +22,13 @@ module.exports = {
         {
           loader: 'html-loader', // Used to output as html
         },
-        {
-          loader: 'webpack-ssi-include-loader',
-          options: {
-            localPath: '/',
-            location: "http://localhost:6006/", // http url where the file can be dl
-          },
-        },
+        // {
+        //   loader: 'webpack-ssi-include-loader',
+        //   options: {
+        //     localPath: '/',
+        //     location: "http://localhost:6006/", // http url where the file can be dl
+        //   },
+        // },
       ],
     });
     // config.module.rules.push({
