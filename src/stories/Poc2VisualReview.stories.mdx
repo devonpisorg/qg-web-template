@@ -1,0 +1,48 @@
+
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="POC 2: Automatic visual review" />
+
+# Automatic visual review
+
+Ship UIs faster with automated workflows for Storybook, gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
+
+- Automatically convert Storybook stories into snapshots, so each story becomes a test case.
+- Each push to the repository will generate a build which contains the whole storybook and snapshots of each story.
+- Visually highlight the difference between the new generated snapshots with the baselines, with pixel comparison.
+- Integrated with Github pull request, reviewers can approve, reject and comments on each snapshot.
+
+Demo: https://www.chromatic.com/builds?appId=61f6feb2e97ef3003afa95aa
+
+## Testing POC principles
+
+- Focus on component unit testing only, does not cover E2E testing.
+- Focus on current workflow integration.
+
+## Chromatic VS Percy
+
+There are 2 popular visual review software available: Chromatic and Percy.
+
+### Similarities
+
+- **Price:** Free 5000 snapshots/month, $149 for the next tier, even already has browserstack subscription.
+- **Implementation:** Link to Github repo with GitHub Apps.
+- **Workflow integration:** Integrated by Github actions.
+- **Testing:** Bitmap snapshots comparison.
+
+### Differences
+
+- **Platform support:** Percy can be used on any HTML pages, while Chromatic on support stories built on Storybook.
+- **Browser support** Both support Chrome, Edge and Firefox, but Percy supports Safari as well.
+- **PR integration** Chromatic will generate 2 steps review for a PR, but Percy will only have one.
+
+Overall they are very similar platform in terms of Storybook implementation, 
+Chromatic is chosen in this POC because I've difficulty to connect Percy with the github repository.
+
+## Gitflow difference
+
+![screen1](/screen1.png)
+
+- There is an 2 additional steps in each Pull Request if using Chromatic
+- **UI Tests**: tested by developer who created the PR, to accept changes as baselines.
+- **UI Review**: reviewed by peers, compare generated snapshots visually to identify unexpected changes.

@@ -1,0 +1,50 @@
+
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="POC 4: Improvements" />
+
+# Improvements
+
+Idetify areas that can be improved in SWE
+
+**This page is still under construction**
+
+## Cover all components from Bootstrap
+
+All components in the SWE library sould be referable and testable. Even the users are using the Bootstrap components directly, the style is still overwritten by SWE, hence need to be addressed.
+
+## Improve our design system
+
+A design system provides guidelines of end-to-end design language to create simple, intuitive and beautiful experiences.
+We should improve our design system and sync with SWE.
+
+- Current: https://www.figma.com/file/veO6GlWUx6rVmMeo9vPECS/SWE-UI-Kit?node-id=0%3A297
+- Target: https://atlassian.design/
+
+## Define basic UI development/design principles
+
+We should have some basic principles to guide us when develop UI components. Here are some principle from my past experience:
+- Atomic
+- Reusable
+- De/Composable
+- Reponsive
+- Accessible
+
+Take **Accessible** as an example, whenever we create new component, we should commit to the the [a11y standard](https://www.w3.org/standards/webdesign/accessibility).
+There are some parctical measures:
+- build components based on W3C suggested standard for keyboard navigation and code structure (eg. https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html)
+- unit test components with a11y plugin (https://github.com/nickcolley/jest-axe)
+
+## Remove obsolete items in documentation
+
+- afaik the template system that create the documentation in SWE is using [SSI](https://en.wikipedia.org/wiki/Server_Side_Includes), which is supported by ASP and Apache. 
+  In the documentation we suggested the user to copy this templates to their project, but this will not work anymore with any modern architectures.
+
+## Create utilities for style system
+
+- create classes/CSS variables that can be accessible by consumers for color and typography (eg. .color-primary-100, .font-xl).
+
+## Maintain code quality
+
+- we could use esLint and [Prettier](https://github.com/prettier/prettier) plugin to maintain a more consistence code format, in order to avoid merge conflict due to code format.
+- we could use something like [SonarCloud](https://sonarcloud.io/) to increase the code quality.

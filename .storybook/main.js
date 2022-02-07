@@ -8,7 +8,7 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   "framework": "@storybook/vue3",
-  "staticDirs": ['../build'],
+  "staticDirs": ['../build', '../src/assets/stories'],
   "previewMainTemplate": "./.storybook/previewMainTemplate.ejs",
   "webpackFinal": async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

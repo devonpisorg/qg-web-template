@@ -1,0 +1,106 @@
+
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="POC 1: Storybook" />
+
+# Storybook
+
+[Storybook](https://storybook.js.org/) is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
+
+## Storybook target audience
+
+People who consume the release of this repository:
+- NPM consumers
+- CDN consumers
+- Squiz Matrix developers
+- NOT for general public
+
+## Development workflow difference
+
+[img]
+
+Major advantages:
+- Maintain single source for development, testing, and documentation
+- Created story for visual review tools eg. [Chromatic](https://www.chromatic.com/) / [Percy](https://percy.io/)
+- Clean up component structure in SWE4
+- First step for further system upgrade
+- Better documentation UI
+
+## Storybook POC principles
+
+- Progressive migration: avoid breaking any existing pipeline, only add Storybook as an add-on.
+- Identify issues, but not to fix them.
+
+## Challenges
+
+### SWE4 compatibility
+
+SWE4 components is developed using JQuery + Bootstrap HTML template, while Storybook is targeted to component building using common JS frameworks, so extra investigation is needed.
+
+### Legacy SSI template system
+
+SWE4 layout components are using a legacy SSI template system, which can be used in Storybook with a HTML loader and [SSI plugin](https://github.com/SylRob/webpack-ssi-include-loader), but that will create problem during the progressive testing stage, for example during the Chromatic build process. Therefore alternative template system is needed.
+
+### Adding QG header and footer to Storybook
+
+This is possible to do so by modifying the [Storybook template](https://github.com/devonpisorg/qg-web-template/blob/storybook-implementation-vue/.storybook/previewMainTemplate.ejs). But I don't think this is necessary as this documentation is not public facing.
+
+## Storybook frameworks study
+
+### Vanilla Html/JS VS JS framework
+
+I've created 2 separate branched to compare the implementations.
+
+- Pure HTML/JS Storybook [repo](https://github.com/devonpisorg/qg-web-template/tree/storybook-implemnetation) | [demo]()
+- Vue Storybook [repo](https://github.com/devonpisorg/qg-web-template/tree/storybook-implementation-vue) | [demo](https://storybook-implementation-vue.dy0t2hdb9pg0n.amplifyapp.com/)
+
+The reason of choosing `Vue` as JS framework will be explained in the next section.
+
+Here is the comparisons of Html/JS VS JS framework in Storybook:
+
+[img]
+
+Please note for this demo, JS framework only to provide an alternative template system to build the components, it doesn't affect any functional logic which is defined by jQuery.
+
+### Vue/Angular VS React
+
+Both Vue/Angular support progressive enhancement, which mean they can utilise the existing HTML templates. While React required rebuilding all components into JS modules.
+
+Progressive enhancement is important for SWE if we consider apply a JS framework to SWE in the future, since most of SWE consumers are server side rendered applications (eg. Java / Python / Squiz Matrix).
+
+Although my experience is mostly on React and I have good time with it, it works best with organization with clear separation of front-end and back-end applications or SPA. Unfortunately it doesn't suit our organization.
+
+Problems identified with React Storybook
+- All templates has to be re-written into React components.
+- Most html attributes have to be re-written into camel case in react template, otherwise will have browser warning.
+
+### Vue VS Angular
+
+I didn't spend much time for this comparison, they are similar in term of architecture (similar MVC model), choose Vue over Angular is purely for developer preference and simplicity.
+
+## Vue Storybook implementation
+
+https://github.com/qld-gov-au/qg-web-template/compare/release-v4.0.11...devonpisorg:storybook-implementation-vue
+
+- Create a basic structure of categories for SWE4 components in Storybook.
+- HTML template conversion for temporary implementation: an [utility function](https://github.com/devonpisorg/qg-web-template/blob/storybook-implementation-vue/src/stories/utils.js) has been created to clean up the HTML template, to convert the `SSI includes` to VUE instances and remove `Script` tags in the templates to avoid side effect warnings.
+
+## Storybook deployment
+
+I'm using the [AWS Amplify](https://aws.amazon.com/amplify/) service for deploying the Storybook builds.
+The advantages using Amplify over Github Page include:
+
+- target for hosting static site content and Single Page Application (SPA), and Storybook is just a simple SPA.
+- no need to run CLI command (tho CLI is optional) for deployment, automatically deploy based on branch commits, integrated with Github Apps.
+- simpler setup than S3 bucket.
+- pipeline/CICD is configurable.
+- support multiple branches deployment.
+- cheap, [free tier](https://aws.amazon.com/amplify/pricing/?nc=sn&loc=4) is more than enough, even the next tier is cheap.
+
+## Goals
+
+- identify, define, document and stick to **UI library principles**
+- Improve components coverage
+- Sync with [design system](https://www.figma.com/file/veO6GlWUx6rVmMeo9vPECS/SWE-UI-Kit?node-id=109%3A8315) in figma
+- Clean up components folder structure, define hierachy
+- Proper eslint+prettier implementation for code formatting
