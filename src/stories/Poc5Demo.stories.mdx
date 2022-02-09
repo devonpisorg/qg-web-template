@@ -1,0 +1,282 @@
+
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="POC 5: Demo" />
+
+# Demo transcript
+
+In this demo I'll try to develop a simple card component with Storybook, and go through the testing and deployment process.
+
+## Start up the Storybook dev server
+
+By running `yarn storybook` command and `yarn watch` in seperate terminals, or running `yarn storybook-watch` in a single terminal (doesn't work intermittently in this POC...).
+
+## Create a new feature branch
+
+In this demo I branch off from `storybook-implementation-vue`.
+
+## Create a story file for the component
+
+We will call our new component as `CardDemo`, create a stories file `CardDemo.stories.mdx` in `/src/stories/ui`.
+
+In this file, we'll:
+- define the story location
+- create a story with HTML template
+- adding description with markdown language.
+
+```js
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+<Meta title="Components/UI/Card" />
+
+# Card
+
+The card component is used to provide a brief summary of content or a task, often with a link to more detail. Cards are frequently displayed alongside other cards to group related content or tasks. Cards can contain multiple elements, such as images, links, actions, text and more.
+
+## Default card
+
+<Canvas withSource="open">
+  <Story name="Default">
+    {() => {
+      return {
+        template: `
+          <article class="qg-card qg-card__light-theme col-12 col-sm-6 col-lg-4 qg-card-demo">
+            <div class="content">
+              <img src="http://via.placeholder.com/840x460/ddd/ddd" alt="">
+              <div class="qg-card__footer">
+                <a href="/docs/components.html" class="qg-btn btn-link">Button Text</a>
+              </div>
+            </div>
+          </article>
+        `,
+      };
+    }}
+  </Story>
+</Canvas>
+```
+
+## Add another example to the story
+
+We want to add another use case in the same story, add this to the story's template:
+
+```html
+<article class="qg-card qg-card__light-theme col-12 col-sm-6 col-lg-4 qg-card-demo">
+  <div class="content">
+    <img src="http://via.placeholder.com/840x460/ddd/ddd" alt="">
+    <div class="qg-card__footer">
+      <a href="#" class="qg-btn btn-secondary">Button Text</a>
+    </div>
+  </div>
+</article>
+```
+
+## Move template to a separate HTML file
+
+To maintain code cleaness, we can factor the HTML template to a separate file `templates/Default.html`.
+
+Then import and use it:
+
+```js
+import Default from './templates/Default.html';
+...
+<Canvas withSource="open">
+  <Story name="Default">
+    {() => {
+      return {
+        template: Default
+      }
+    }}
+  </Story>
+</Canvas>
+```
+
+## Create another story with a different card theme
+
+To do this we simply replicate the first story and its template. And edit the class name `qg-card__light-theme` in the template.
+We call the new Story `Dark theme`.
+
+## Adding CSS and jQuery to the component
+
+To add custome style and logic to the componetn, we stick to the same old way to add CSS and jQuery functionality to this new component.
+
+Append the CSS below to `/src/assets/_project/_blocks/components/misc/_qg-cards.scss`.
+
+```scss
+.qg-card {
+  &.qg-card-demo {
+    .content {
+      border-width: 5px;
+      border-radius: 10px;
+    }
+    &.hover {
+      .content {
+        border-color: red;
+      }
+    }
+  }
+  &.qg-card__pink-theme {
+    .content {
+      background: pink;
+    }
+  }
+}
+```
+
+Add the code below to `src/assets/_project/_blocks/components/misc/qg-card-demo.js`.
+```js
+$(function () {
+  'use strict';
+  $('.qg-card-demo').on('mouseover', function () {
+    $(this).addClass("hover");
+  }).on('mouseout', function () {
+    $(this).removeClass("hover");
+  });
+  
+});
+```
+
+And add this line to `src/assets/_project/_blocks/components/qg-components.js`.
+```js
+import './misc/qg-card-demo';
+```
+
+You'll have to refresh storybook to see the result.
+
+## Use Vue component instead of HTML template to construct the component
+
+We'll try to use a reusable Vue component to create stories instead using crumblesome HTML templates.
+
+First add the Vue component `src/stories/components/ui/CardDemo/CardDemo.vue`:
+
+```vue
+<template>
+  <article :class="classes">
+    <div class="content">
+      <slot></slot>
+    </div>
+  </article>
+</template>
+
+<script>
+import { reactive, computed } from 'vue';
+
+export const cardTheme = ['light', 'dark', 'pink'];
+
+export default {
+  name: 'qg-card-demo',
+
+  props: {
+    theme: {
+      type: String,
+      validator: function (value) {
+        return cardTheme.indexOf(value) !== -1;
+      },
+      default: 'light',
+    },
+  },
+
+  setup(props) {
+    const { theme } = reactive(props);
+    return {
+      classes: computed(() => ({
+        'qg-card col-12 col-sm-6 col-lg-4 qg-card-demo': true,
+        [`qg-card__${theme}-theme`]: true,
+      })),
+    };
+  },
+};
+</script>
+```
+
+then modify the story in `src/stories/components/ui/CardDemo/CardDemo.stories.mdx`:
+```js
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { cardDemoTheme } from './CardDemo.vue';
+import CardDemo from './CardDemo.vue';
+
+<Meta title="Components/UI/Card" />
+
+# Card
+
+The card component is used to provide a brief summary of content or a task, often with a link to more detail. Cards are frequently displayed alongside other cards to group related content or tasks. Cards can contain multiple elements, such as images, links, actions, text and more.
+
+## Default card
+
+Default card description
+
+<Canvas withSource="open">
+  <Story name="Default">
+    {() => {
+      return {
+        components: {'qg-card-demo': CardDemo},
+        template: cardDemoTheme.map(theme => (`
+          <qg-card-demo theme="${theme}">
+            <img src="http://via.placeholder.com/840x460/ddd/ddd" alt="">
+            <div class="qg-card__footer">
+              <a href="/docs/components.html" class="qg-btn btn-link">Button Text</a>
+            </div>
+          </qg-card-demo>
+          <qg-card-demo theme="${theme}">
+            <img src="http://via.placeholder.com/840x460/ddd/ddd" alt="">
+            <div class="qg-card__footer">
+              <a href="#" class="qg-btn btn-secondary">Button Text</a>
+            </div>
+          </qg-card-demo>
+        `)).join("\n")
+      }
+    }}
+  </Story>
+</Canvas>
+
+```
+
+## Push your feature branch and create PR
+
+In github PR you'll have 2 additional approval requests created by Chromatic.
+![screen1](/screen1.png)
+
+- **UI Review** - reviewed by peers/designers
+- **UI Test** - reviewed by yourself
+
+## Review your change in Chromatic
+
+Chromatic will generate new snapshots for the new component, and you'll need to accept them as baselines.
+
+## Check the deployed storybook
+
+Once you merged your branch, the new version of Storybook will be deployed to [here](https://storybook-implementation-vue.dy0t2hdb9pg0n.amplifyapp.com/?path=/docs/welcome--page).
+The deployment can be achieved by Github Action or AWS Amplify service.
+
+## Make another minor stlye change
+
+To show the Chromatic snapshot comparison, we'll create another feature branch, 
+make another minor style change in `/src/assets/_project/_blocks/components/misc/_qg-cards.scss`:
+```scss
+.qg-card {
+  &.qg-card-demo {
+    .content {
+      border-width: 10px;
+      border-radius: 30px;
+    }
+    &.hover {
+      .content {
+        border-color: red;
+      }
+    }
+  }
+  &.qg-card__pink-theme {
+    .content {
+      background: red;
+    }
+  }
+}
+```
+
+## Push your feature branch and create another PR
+
+After you push the new branch, you will see how the snapshot comparison behave in Chromatic.
+
+## Chromatic price
+
+Free 5000 snapshots/month, $149 for the tier 1. 35,000 snapshots + 0.005$ extra snapshot.
