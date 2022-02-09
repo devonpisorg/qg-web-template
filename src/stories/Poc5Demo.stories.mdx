@@ -160,7 +160,7 @@ First add the Vue component `src/stories/components/ui/CardDemo/CardDemo.vue`:
 <script>
 import { reactive, computed } from 'vue';
 
-export const cardTheme = ['light', 'dark', 'pink'];
+export const cardDemoTheme = ['light', 'dark', 'pink'];
 
 export default {
   name: 'qg-card-demo',
@@ -169,7 +169,7 @@ export default {
     theme: {
       type: String,
       validator: function (value) {
-        return cardTheme.indexOf(value) !== -1;
+        return cardDemoTheme.indexOf(value) !== -1;
       },
       default: 'light',
     },
