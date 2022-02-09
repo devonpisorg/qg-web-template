@@ -49,7 +49,9 @@ This is possible to do so by modifying the [Storybook template](https://github.c
 
 ### Vanilla Html/JS VS JS framework
 
-I've created 2 separate branched to compare the implementations.
+Storybook supports different JS frameworks, each JS feameowrk has its own Storybook "version".
+
+I've created 2 separate branches to compare the implementations.
 
 - Pure HTML/JS Storybook [repo](https://github.com/devonpisorg/qg-web-template/tree/storybook-implemnetation) | [demo]()
 - Vue Storybook [repo](https://github.com/devonpisorg/qg-web-template/tree/storybook-implementation-vue) | [demo](https://storybook-implementation-vue.dy0t2hdb9pg0n.amplifyapp.com/)
@@ -58,9 +60,9 @@ The reason of choosing `Vue` as JS framework will be explained in the next secti
 
 Here is the comparisons of Html/JS VS JS framework in Storybook:
 
-[img]
+![diagram2](/diagram2.png)
 
-Please note for this demo, JS framework only to provide an alternative template system to build the components, it doesn't affect any functional logic which is defined by jQuery.
+Please note for this demo, the usage of a JS framework is to provide an alternative template system to build the components only, it doesn't affect any functional logic which is defined by existing jQuery.
 
 ### Vue/Angular VS React
 
@@ -88,6 +90,9 @@ https://github.com/qld-gov-au/qg-web-template/compare/release-v4.0.11...devonpis
 ## Storybook deployment
 
 I'm using the [AWS Amplify](https://aws.amazon.com/amplify/) service for deploying the Storybook builds.
+
+Please note I'm only using the web hosting / front-end functionality of Amplify for create a [simple static website deployment](https://aws.amazon.com/amplify/hosting/) pipeline, there's nothing to do with back-end functionality. 
+
 The advantages using Amplify over Github Page include:
 
 - target for hosting static site content and Single Page Application (SPA), and Storybook is just a simple SPA.
