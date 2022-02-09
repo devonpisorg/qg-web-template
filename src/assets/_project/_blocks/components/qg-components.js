@@ -1,6 +1,7 @@
 import './social-media/qg-social-media';
 import './misc/qg-progressive-reveal';
 import './misc/qg-header';
+import './misc/qg-card-demo';
 import '../layout/location/qg-location';
 import './misc/qg-license';
 import './carousel/qg-carousel';
