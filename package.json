@@ -24,9 +24,9 @@
     "publish-cdn": "export NODE_ENV=prod && npm run release && gulp cdn-clean && gulp cdn-clone && gulp cdn-transfer && gulp cdn-add && gulp cdn-commit && gulp cdn-push",
     "publish-test-cdn": "npm run release && export NODE_ENV=test && gulp cdn-clean && gulp cdn-clone && gulp cdn-transfer && gulp cdn-branch && gulp cdn-add && gulp cdn-commit && gulp cdn-push",
     "postpublish": "gulp clean-publish",
-    "storybook": "STORYBOOK_ASSET_BASE=http://localhost:8086 start-storybook -p 6006 --docs",
-    "storybook-watch": "concurrently \"gulp watch\" \"STORYBOOK_ASSET_BASE=http://localhost:8086 start-storybook -p 6006\"",
-    "build-storybook": "npm run build && build-storybook --docs",
+    "storybook": "NODE_ENV=storybook start-storybook -p 6006 --docs",
+    "storybook-watch": "concurrently \"gulp watch\" \"NODE_ENV=storybook start-storybook -p 6006\"",
+    "build-storybook": "NODE_ENV=storybook npm run build && build-storybook --docs",
     "chromatic": "npx chromatic --project-token=4c58dd8c9ade",
     "lint-storybook": "eslint src/stories"
   },

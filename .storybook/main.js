@@ -43,7 +43,7 @@ module.exports = {
     //     remoteBasePath:"http://localhost:6006",
     // }));
 
-    // Return the altered config
+    // Return the altered configwebpackFinal: async (config) => {
     return config;
   },
 }

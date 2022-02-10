@@ -1,7 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import BasicDefault from './templates/BasicDefault.html';
-import BasicThumbnail from './templates/BasicThumbnail.html';
+import { parseHtml } from '../../../utils';
 import FigureDefault from './templates/FigureDefault.html';
 import FigureDescriptionRight from './templates/FigureDescriptionRight.html';
 import FigureDescriptionLeft from './templates/FigureDescriptionLeft.html';
@@ -25,7 +24,7 @@ you also need to add `class="clearfix"` to the parent container.
   <Story name="FigureDefault">
     {() => {
       return {
-        template: FigureDefault,
+        template: parseHtml(FigureDefault),
       };
     }}
   </Story>
@@ -37,7 +36,7 @@ you also need to add `class="clearfix"` to the parent container.
   <Story name="FigureDescriptionRight">
     {() => {
       return {
-        template: FigureDescriptionRight,
+        template: parseHtml(FigureDescriptionRight),
       };
     }}
   </Story>
@@ -49,7 +48,7 @@ you also need to add `class="clearfix"` to the parent container.
   <Story name="FigureDescriptionLeft">
     {() => {
       return {
-        template: FigureDescriptionLeft,
+        template: parseHtml(FigureDescriptionLeft),
       };
     }}
   </Story>
@@ -64,7 +63,7 @@ You are required to provide the attribute `data-fancybox` an gallery id which be
   <Story name="Enlarge">
     {() => {
       return {
-        template: Enlarge,
+        template: parseHtml(Enlarge),
       };
     }}
   </Story>

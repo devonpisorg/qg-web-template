@@ -4,7 +4,7 @@
     <a v-if="enlargeSrc" :href="enlargeSrc" :data-fancybox="fancyboxId">
       <span>View larger image</span>
       <img :src="src" :alt="alt" :class="imgClasses"/>
-      <img class="figure__expand-icon" src="/assets/v4/latest/images/Expand.svg" alt="Enlarge image">
+      <img class="figure__expand-icon" src="assets/v4/latest/images/Expand.svg" alt="Enlarge image">
     </a>
     <img v-if="!enlargeSrc" :src="src" :alt="alt" :class="imgClasses"/>
     <figcaption v-if="caption || credits">

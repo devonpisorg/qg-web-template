@@ -11,6 +11,8 @@ module.exports = function (gulp, plugins, config, destFolder, banner) {
         return `https://static.qgov.net.au/assets/${config.versionName}`;
       } else if (process.env.NODE_ENV === 'test') {
         return `https://test-static.qgov.net.au/assets/${config.versionName}`;
+      } else if (process.env.NODE_ENV === 'storybook') {
+        return `assets/${config.versionName}`;
       } else {
         return `/assets/${config.versionName}`;
       }
