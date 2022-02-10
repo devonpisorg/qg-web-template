@@ -1617,9 +1617,9 @@ if ($("script[src*='jquery.fancybox']").length === 0) {
   // load scripts and styles only if any of the selectors are present on the page
   if ($('[data-fancybox]').length > 0 || $('.qg-image-gallery').length > 0 || $('.qg-lightbox').length > 0 || $('.image-gallery').length > 0 || $('[class*="cut-in"]').length > 0) {
     // append style
-    $('head').append($("<link rel='stylesheet' href='/assets/v4/latest/lib/ext/fancybox/jquery.fancybox.min.css' type='text/css' media='screen' />")); // load script
+    $('head').append($("<link rel='stylesheet' href='assets/v4/latest/lib/ext/fancybox/jquery.fancybox.min.css' type='text/css' media='screen' />")); // load script
 
-    $.getScript('/assets/v4/latest/lib/ext/fancybox/jquery.fancybox.min.js', function () {
+    $.getScript('assets/v4/latest/lib/ext/fancybox/jquery.fancybox.min.js', function () {
       // image gallery
       $('.qg-image-gallery, .image-gallery').each(function (index) {
         $(this).find('a').each(function () {
@@ -1791,7 +1791,7 @@ A1 This function checks meta tag [name="DCTERMS.license] and then insert markup 
 
   var licenceOptions = {
     url: '//creativecommons.org/licenses/',
-    imgSrc: '/assets/v4/latest/images/licences/',
+    imgSrc: 'assets/v4/latest/images/licences/',
     types: {
       'by': {
         'name': 'Attribution',
@@ -6192,15 +6192,15 @@ function browserSupportsDateInput() {
 
 
 if (!browserSupportsDateInput() && $('input[type=\'date\']').length > 0) {
-  $.getScript('/assets/v4/latest/lib/ext/nodep-date-input-polyfill/nodep-date-input-polyfill.dist.js', function () {
+  $.getScript('assets/v4/latest/lib/ext/nodep-date-input-polyfill/nodep-date-input-polyfill.dist.js', function () {
     console.log('date polyfill loaded');
   });
 } // 'qg-date-input' adds a jquery ui datepicker
 
 
 if ($('input[class=\'qg-date-input\']').length > 0) {
-  $.getScript('/assets/v4/latest/lib/ext/jquery-ui-bundle/jquery-ui.min.js', function () {
-    $('head').append($("<link rel='stylesheet' href='/assets/v4/latest/lib/ext/jquery-ui-bundle/jquery-ui.min.css' type='text/css' media='screen' />"));
+  $.getScript('assets/v4/latest/lib/ext/jquery-ui-bundle/jquery-ui.min.js', function () {
+    $('head').append($("<link rel='stylesheet' href='assets/v4/latest/lib/ext/jquery-ui-bundle/jquery-ui.min.css' type='text/css' media='screen' />"));
     $('.qg-date-input').datepicker({
       dateFormat: 'dd/mm/yy',
       changeYear: true,
