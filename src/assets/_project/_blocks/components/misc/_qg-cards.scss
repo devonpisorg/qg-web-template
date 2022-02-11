@@ -260,3 +260,22 @@
     margin-top: 0;
   }
 }
+
+.qg-card {
+  &.qg-card-demo {
+    .content {
+      border-width: 5px;
+      border-radius: 10px;
+    }
+    &.hover {
+      .content {
+        border-color: red;
+      }
+    }
+  }
+  &.qg-card__pink-theme {
+    .content {
+      background: pink;
+    }
+  }
+}
