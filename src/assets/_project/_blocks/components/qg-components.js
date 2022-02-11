@@ -2,6 +2,7 @@ import './social-media/qg-social-media';
 import './misc/qg-progressive-reveal';
 import './misc/qg-header';
 import '../layout/location/qg-location';
+import './misc/qg-card-demo';
 import './misc/qg-license';
 import './carousel/qg-carousel';
 import { QgQuickExit } from './quick-exit/qg-quick-exit';
