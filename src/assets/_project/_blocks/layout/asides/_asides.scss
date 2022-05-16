@@ -111,3 +111,10 @@
   }
 }
 
+.qg-aside {
+  img:not(.open-data):not(.actual-image-size) {
+    width: 100%;
+    height: auto;
+  }
+}
+
